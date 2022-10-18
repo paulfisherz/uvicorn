@@ -292,6 +292,10 @@ class AccessLogFields(abc.Mapping):  # pragma: no cover
     def request_time_microseconds(self) -> str:
         return str(int(self.duration * 1_000_000))
 
+    @_register_handler("M")
+    def request_time_milliseconds(self) -> str:
+        return str(int(self.duration * 1_000))
+
     @_register_handler("L")
     def request_time_decimal_seconds(self) -> str:
         return "%.6f" % self.duration
